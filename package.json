@@ -1,0 +1,34 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "cross-env NODE_ENV=production nodemon server.js",
+    "insert:products": "node ./utils/insertOrDelFromDb.js --ins --prod",
+    "delete:products": "node ./utils/insertOrDelFromDb.js --del --prod",
+    "insert:catogories": "node ./utils/insertOrDelFromDb.js --ins --cat",
+    "delete:catogories": "node ./utils/insertOrDelFromDb.js --del --cat"
+  },
+  "author": "Muhammad Hannan Shoukat",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "email-validator": "^2.0.4",
+    "express": "^4.18.2",
+    "JSONStream": "^1.3.5",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "socket.io": "^4.6.1",
+    "stripe": "^12.7.0",
+    "twilio": "^4.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
