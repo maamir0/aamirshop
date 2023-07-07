@@ -19,18 +19,29 @@ const stripe = require("stripe")(
 );
 const app = express();
 
+const endpointSecret = "we_1NEFxfFLDQjuRWyy1RfLPEiG";
+
+app.use(
+  express.json({
+    verify: (req, res, buf) => {
+      req.rawBody = buf;
+    },
+  })
+);
+initDb();
+app.use(cors({ origin: true }));
 app.post(
-  "stripe/webhook",
+  "/stripe/webhook",
   express.raw({ type: "application/json" }),
-  async (request, response) => {
-    const sig = request.headers["stripe-signature"];
+  async (req, res) => {
+    const sig = req.headers["stripe-signature"];
 
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+      event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
     } catch (err) {
-      response.status(400).send(`Webhook Error: ${err.message}`);
+      res.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
     // Handle the event
@@ -53,18 +64,11 @@ app.post(
     }
 
     // Return a 200 response to acknowledge receipt of the event
-    response.send();
+    res.send();
   }
 );
 
-app.use(express.json());
-initDb();
-app.use(cors({ origin: true }));
-
 const url = "/api/v1";
-
-const endpointSecret =
-  "whsec_14b96451e31453210d26f48d9f521f50d54d566c462811fd72f8100eefc3c995";
 
 app.use(express.static("public"));
 app.use(`${url}/auth`, authRoutes);

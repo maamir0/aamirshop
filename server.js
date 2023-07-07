@@ -17,6 +17,6 @@ server.use(app);
 //   console.log(`Server is running on port ${PORT}`);
 // });
 // 80, "0.0.0.0",
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(80, "0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
 });

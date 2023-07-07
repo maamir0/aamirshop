@@ -14,7 +14,7 @@
   "author": "Muhammad Hannan Shoukat",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
@@ -24,6 +24,7 @@
     "mongoose": "^7.0.3",
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.1",
+    "nodemon": "^2.0.22",
     "socket.io": "^4.6.1",
     "stripe": "^12.7.0",
     "twilio": "^4.10.0"

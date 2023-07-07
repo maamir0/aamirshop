@@ -7,9 +7,9 @@ class Mail {
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
-        user: "abb2b824173412",
-        pass: "b67ef371224669",
-      },
+        user: "583dacc3d39f9b",
+        pass: "be30cf2858f1cb"
+      }
     });
   }
 
